@@ -4,31 +4,76 @@
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-
+En este capítulo se hace un resumen del trabajo realizado y los problemas que surgieron durante el desarrollo.
 %----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Conclusiones generales }
+\section{Resultados obtenidos}
 
-La idea de esta sección es resaltar cuáles son los principales aportes del trabajo realizado y cómo se podría continuar. Debe ser especialmente breve y concisa. Es buena idea usar un listado para enumerar los logros obtenidos.
 
-Algunas preguntas que pueden servir para completar este capítulo:
+Se logró construir un prototipo, a partir del cual se crearon más de treinta pantallas las cuales están instaladas en la ciudad de Guayaquil. A continuación una resumen de los resultados.
 
+
+
+Documentación:
 \begin{itemize}
-\item ¿Cuál es el grado de cumplimiento de los requerimientos?
-\item ¿Cuán fielmente se puedo seguir la planificación original (cronograma incluido)?
-\item ¿Se manifestó algunos de los riesgos identificados en la planificación? ¿Fue efectivo el plan de mitigación? ¿Se debió aplicar alguna otra acción no contemplada previamente?
-\item Si se debieron hacer modificaciones a lo planificado ¿Cuáles fueron las causas y los efectos?
-\item ¿Qué técnicas resultaron útiles para el desarrollo del proyecto y cuáles no tanto?
+\item Se desarrolló el firmware bajo control de versiones.
+\item Se utilizó Doxygen para documentar el firmware del procesador.
+\item Se crearon manuales de armado de PCBs y manuales de conexión de la pantalla.  
 \end{itemize}
 
+Hardware:
+\begin{itemize}
+\item Se diseñó un PCB matriz de leds.
+\item Se diseñó un PCB de distribución.
+\item Se creó un banco de pruebas para evaluar las matrices de leds salidas del horno, esto sirvió para que el persona de producción electrónica reprocesara las PCBs dañadas.
+\item La PCB matriz de led funcionó después de solucionar un problema de hardware mediante firmware.
+\end{itemize}
+
+Software:
+\begin{itemize}
+\item El firmware del procesador se ejecuta a través de un servicio.
+\item Los mensajes se cambian remotamente a través de una carpeta compartida.
+\item Se pueden interactuar con programas futuros mediante archivos FIFO.
+\item Se estableció comunicaciones entre la pantalla y la estación remota tanto para mensajes udp cortos como para guardar archivos en la carpeta compartida.
+\item En el presente proyecto se coordinan aproximadamente treinta pantallas desde una misma estación de control.
+\item Se reguló la intensidad de la pantalla a través de la hora del sistema operativo.
+\item Se desarrollo un script para actualizar los programas de la pantalla, son aproximadamente treinta pantallas actualizarlas manualmente toma demasiado tiempo.
+
+\end{itemize}
+
+FPGA:
+\begin{itemize}
+\item Se logró controlar la pantalla led la cual tiene una resolución de 384X96 pixeles con la FPGA a una frecuencia superior a 30 hz.
+\item La cantidad de colores posibles por cada pixel fue de 281474976710656 colores.
+\end{itemize}
+
+
+
+La planificación original no se cumplió debidos a los siguientes obstáculos:
+\begin{itemize}
+\item Debido a la pandemia dentro de la empresa se priorizaron otros proyectos.
+\item Retraso en la importación de PCBs ocasionados por la pandemia.
+\item Errores en la PCB de leds que fueron solucionados mediante software.
+\item Falta de habilidad para desarrollar programas en verilog.
+\item Poco tiempo de pruebas del prototipo completo, debido a que el prototipo fue instalado una semana después de haber sido ensamblado.
+
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{Próximos pasos}
 
-Acá se indica cómo se podría continuar el trabajo más adelante.
+En esta sección se indican las lineas de acción inmediatas para continuar con el desarrollo del producto:
+\begin{itemize}
+\item Usar un servidor FLASK para configurar la pantalla a través de Wi-Fi en sitio.
+\item Usar una foto celda en lugar del reloj del sistema para regular la intensidad de la pantalla.
+\item Crear LOGS para los posibles errores.
+\item Rediseñar el PCB que contiene a los leds para aumentar la corriente en  cada led para aumentar el brillo usando un barrido de 4 filas en lugar de uno de 8 filas y corregir los errores detectados.
+\item Diseñar una PCB con un FPGA básico para distribuir el control en módulos de un metro por un metro.
+\item Diagnóstico remoto de leds dañados.
+\end{itemize}
