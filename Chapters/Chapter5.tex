@@ -4,7 +4,6 @@
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-En este capítulo se hace un resumen del trabajo realizado y los problemas que surgieron durante el desarrollo.
 %----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
@@ -14,66 +13,39 @@ En este capítulo se hace un resumen del trabajo realizado y los problemas que s
 \section{Resultados obtenidos}
 
 
-Se logró construir un prototipo, a partir del cual se crearon más de treinta pantallas las cuales están instaladas en la ciudad de Guayaquil. A continuación una resumen de los resultados.
 
 
+Se logró construir una pantalla led full color, la cual se encuentra instalada en la ciudad de Guayaquil, la pantalla muestra imágenes previamente almacenadas en su memoria interna, la configuración de estos mensajes se envía a través de una red lan.
 
-Documentación:
+Todos lo requerimientos planteados se cumplieron, para llegar a este resultado se seleccionó la siguiente solución:
 \begin{itemize}
-\item Se desarrolló el firmware bajo control de versiones.
-\item Se utilizó Doxygen para documentar el firmware del procesador.
-\item Se crearon manuales de armado de PCBs y manuales de conexión de la pantalla.  
+\item Se diseño un firmware en base a un sistema operativo Linux que permite manejar los diferentes procesos como servicios independientes que se comunican mediante un sistema de archivos FIFO.
+\item Se diseño la descripción de hardware usando \textit{verilog},  esta descripción controla las matrices de leds de manera independiente.
+\item Se diseñaron dos PCBs, un PCB matriz de leds y un PCB para distribuir la señal desde el FPGA hacia las matrices de leds.
 \end{itemize}
-
-Hardware:
+Los conocimientos adquiridos en las materias de la especialización en sistemas embebidos que fueron necesarios para el desarrollo de este proyecto fueron:
 \begin{itemize}
-\item Se diseñó un PCB matriz de leds.
-\item Se diseñó un PCB de distribución.
-\item Se creó un banco de pruebas para evaluar las matrices de leds salidas del horno, esto sirvió para que el persona de producción electrónica reprocesara las PCBs dañadas.
-\item La PCB matriz de led funcionó después de solucionar un problema de hardware mediante firmware.
-\end{itemize}
-
-Software:
-\begin{itemize}
-\item El firmware del procesador se ejecuta a través de un servicio.
-\item Los mensajes se cambian remotamente a través de una carpeta compartida.
-\item Se pueden interactuar con programas futuros mediante archivos FIFO.
-\item Se estableció comunicaciones entre la pantalla y la estación remota tanto para mensajes udp cortos como para guardar archivos en la carpeta compartida.
-\item En el presente proyecto se coordinan aproximadamente treinta pantallas desde una misma estación de control.
-\item Se reguló la intensidad de la pantalla a través de la hora del sistema operativo.
-\item Se desarrollo un script para actualizar los programas de la pantalla, son aproximadamente treinta pantallas actualizarlas manualmente toma demasiado tiempo.
-
-\end{itemize}
-
-FPGA:
-\begin{itemize}
-\item Se logró controlar la pantalla led la cual tiene una resolución de 384X96 pixeles con la FPGA a una frecuencia superior a 30 hz.
-\item La cantidad de colores posibles por cada pixel fue de 281474976710656 colores.
+\item Sistemas operativos de propósito general: el firmware se desarrollo usando \textit{threads}, \textit{mutex} y archivos FIFO.
+\item Circuitos lógicos programables: la descripción de hardware fue desarrollada en \textit{verilog} aplicando maquina de estados.
+\item Diseño de circuitos impresos: se usó KiCad para diseñar el PCB que distribuye las señales a las matrices de leds.
 \end{itemize}
 
 
+Durante el desarrollo de este producto se usó control de versiones y se documentó el código del firmware con \textit{doxygen}.
 
-La planificación original no se cumplió debidos a los siguientes obstáculos:
-\begin{itemize}
-\item Debido a la pandemia dentro de la empresa se priorizaron otros proyectos.
-\item Retraso en la importación de PCBs ocasionados por la pandemia.
-\item Errores en la PCB de leds que fueron solucionados mediante software.
-\item Falta de habilidad para desarrollar programas en verilog.
-\item Poco tiempo de pruebas del prototipo completo, debido a que el prototipo fue instalado una semana después de haber sido ensamblado.
 
-\end{itemize}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{Próximos pasos}
 
-En esta sección se indican las lineas de acción inmediatas para continuar con el desarrollo del producto:
+En esta sección se indican las líneas de acción inmediatas para continuar con el desarrollo del producto:
 \begin{itemize}
 \item Usar un servidor FLASK para configurar la pantalla a través de Wi-Fi en sitio.
 \item Usar una foto celda en lugar del reloj del sistema para regular la intensidad de la pantalla.
 \item Crear LOGS para los posibles errores.
-\item Rediseñar el PCB que contiene a los leds para aumentar la corriente en  cada led para aumentar el brillo usando un barrido de 4 filas en lugar de uno de 8 filas y corregir los errores detectados.
+\item Rediseñar el PCB matriz de leds con el propósito de aumentar el brillo de la pantalla.
 \item Diseñar una PCB con un FPGA básico para distribuir el control en módulos de un metro por un metro.
-\item Diagnóstico remoto de leds dañados.
+\item Diseñar un sistema de diagnóstico remoto para detectar leds dañados.
 \end{itemize}
