@@ -15,23 +15,23 @@
 
 
 
-Se logró construir una pantalla led full color, la cual se encuentra instalada en la ciudad de Guayaquil, la pantalla muestra imágenes previamente almacenadas en su memoria interna, la configuración de estos mensajes se envía a través de una red lan.
+Se logró construir una pantalla LED full color, que se encuentra instalada en la ciudad de Guayaquil. La pantalla muestra imágenes previamente almacenadas en su memoria interna. La configuración de estos mensajes se envía a través de una red lan.
 
-Todos lo requerimientos planteados se cumplieron, para llegar a este resultado se seleccionó la siguiente solución:
+Todos lo requerimientos planteados se cumplieron. Para llegar a este resultado se seleccionó la siguiente solución:
 \begin{itemize}
-\item Se diseño un firmware en base a un sistema operativo Linux que permite manejar los diferentes procesos como servicios independientes que se comunican mediante un sistema de archivos FIFO.
-\item Se diseño la descripción de hardware usando \textit{verilog},  esta descripción controla las matrices de leds de manera independiente.
-\item Se diseñaron dos PCBs, un PCB matriz de leds y un PCB para distribuir la señal desde el FPGA hacia las matrices de leds.
+\item Se diseñó e implementó un firmware en base a un sistema operativo Linux que permite manejar los diferentes procesos como servicios independientes que se comunican mediante un sistema de archivos FIFO.
+\item Se desarrolló la descripción de hardware usando \textit{verilog}.  Esta descripción controla las matrices de LEDs de manera independiente.
+\item Se diseñaron dos PCBs, uno para la matriz de LEDs y otro para distribuir la señal desde el FPGA hacia las matrices de LEDs.
 \end{itemize}
 Los conocimientos adquiridos en las materias de la especialización en sistemas embebidos que fueron necesarios para el desarrollo de este proyecto fueron:
 \begin{itemize}
-\item Sistemas operativos de propósito general: el firmware se desarrollo usando \textit{threads}, \textit{mutex} y archivos FIFO.
+\item Sistemas operativos de propósito general: el firmware se desarrolló usando \textit{threads}, \textit{mutex} y archivos FIFO.
 \item Circuitos lógicos programables: la descripción de hardware fue desarrollada en \textit{verilog} aplicando maquina de estados.
-\item Diseño de circuitos impresos: se usó KiCad para diseñar el PCB que distribuye las señales a las matrices de leds.
+\item Diseño de circuitos impresos: se usó KiCad para diseñar el PCB que distribuye las señales a las matrices de LEDs.
 \end{itemize}
 
 
-Durante el desarrollo de este producto se usó control de versiones y se documentó el código del firmware con \textit{doxygen}.
+Durante el desarrollo de este trabajo se usó control de versiones y se documentó el código del firmware con \textit{doxygen}.
 
 
 
@@ -42,10 +42,10 @@ Durante el desarrollo de este producto se usó control de versiones y se documen
 
 En esta sección se indican las líneas de acción inmediatas para continuar con el desarrollo del producto:
 \begin{itemize}
-\item Usar un servidor FLASK para configurar la pantalla a través de Wi-Fi en sitio.
+\item Usar un servidor FLASK para configurar la pantalla a través de Wi-Fi en el sitio.
 \item Usar una foto celda en lugar del reloj del sistema para regular la intensidad de la pantalla.
 \item Crear LOGS para los posibles errores.
-\item Rediseñar el PCB matriz de leds con el propósito de aumentar el brillo de la pantalla.
+\item Rediseñar el PCB matriz de LEDs con el propósito de aumentar el brillo de la pantalla.
 \item Diseñar una PCB con un FPGA básico para distribuir el control en módulos de un metro por un metro.
-\item Diseñar un sistema de diagnóstico remoto para detectar leds dañados.
+\item Diseñar un sistema de diagnóstico remoto para detectar LEDs dañados.
 \end{itemize}
