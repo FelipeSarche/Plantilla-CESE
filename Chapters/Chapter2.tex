@@ -5,7 +5,7 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-Este capítulo explica las tecnologías aplicadas en el desarrollo de la pantalla gigante fullcolor. Se presentan los requerimientos identificados al iniciar el trabajo para cumplir con los objetivos.
+Este capítulo explica las tecnologías aplicadas en el desarrollo de la pantalla gigante full color. Se presentan los requerimientos identificados al iniciar el trabajo para cumplir con los objetivos.
 \section{Matriz de LEDs}
 La matriz de LEDs es un conjunto o arreglo de LEDs  bidimensional donde los cátodos se unen en filas y los ánodos se unen en columnas. Existen numerosos métodos para controlar las matrices de LEDs. Para desarrollar este proyecto se seleccionó el método de multiplexación debido a su bajo uso de recursos en comparación a controlar los LEDs de manera individual \citep{CONCEPTOMATRIZ}.
 \subsection{Multiplexación de una Matriz de LEDs }
@@ -43,7 +43,7 @@ En la figura \ref{fig:matrizled} se puede observar una matriz de LEDs de cuatro 
 
 \footnotetext{Imagen tomada de \url{https://web.stanford.edu/class/archive/engr/engr40m.1178/slides_sp17/lecture10.pdf}}
 
-La manera de habilitar las filas es a través de MOSFET canal P y las columnas se habilitan a través de drivers de LEDs.
+Una de las maneras de habilitar las filas es a través de MOSFET canal P y las columnas se habilitan a través de drivers de LEDs \citep{CONCEPTOMATRIZ}.
  
  
 
@@ -53,7 +53,7 @@ La manera de habilitar las filas es a través de MOSFET canal P y las columnas s
 
 
 \subsection{Driver de LED MBI5051}
-El driver que se eligió para habilitar las columnas de LEDs fue el driver MBI5051, este driver fue diseñado para ser usado en pantallas exteriores de vídeo, las características del driver se muestran en la tabla \ref{tab:driverled}.
+El driver que se eligió para habilitar las columnas de LEDs fue el driver MBI5051. Este driver es un producto de la empresa MACROBLOCK. En diseños anteriores se usaron drivers de esta empresa. Este driver fue diseñado para ser usado en pantallas exteriores de vídeo. Las características del driver se muestran en la tabla \ref{tab:driverled}. 
 
 \begin{table}[h]
 \centering
@@ -63,11 +63,11 @@ El driver que se eligió para habilitar las columnas de LEDs fue el driver MBI50
 \textbf{Especificaciones}& \textbf{Detalles}\\
 \midrule 
 
-Voltaje alimentación & 3.0V-5.5V\\
+Voltaje alimentación & 3,0 V-5,5 V\\
 Canales de corriente constante & 16\\
 Rango de corriente constante por canal & 2 a 45 mA\\
 Profundidad de color & 14 o 16 bits\\
-Máxima frecuencia de reloj & 30 Mhz\\
+Máxima frecuencia de reloj & 30 MHz\\
 
 \bottomrule
 \hline
@@ -78,7 +78,8 @@ Máxima frecuencia de reloj & 30 Mhz\\
 \footnotetext{Referencia tomada de \url{https://www.neumueller.com/datenblatt/macroblock/MBI5051\%20Datenblatt\%20-\%20Datasheet.pdf}}
 
 \section{LED SMD CLX6F}
-El LED que fue elegido para la construcción de la pantalla fue el LED SMD CLX6F. Este es un LED tricolor diseñado para ser usado en pantallas exteriores de vídeo. Las características principales del LED son:
+Los principales productores de LEDs son CREE ,EPISTAR ,NICHIA ,SEOUL SEMICONDUCTOR, Toyoda Gosei y Agilent.
+El LED que fue elegido para la construcción de la pantalla fue el LED SMD CLX6F. El LED SMD CLX6F forma parte del catálogo de productos de la empresa CREE. Se logró contactar con una empresa en Shenzhen que usaba el \textit{chip} de CREE pero agregaba un encapsulado propio, lo que abarato el precio del LED. Este es un LED tricolor diseñado para ser usado en pantallas exteriores de vídeo. Las características principales del LED son:
 \begin{itemize}
 \item Resistencia al agua IPX8.
 \item Luminosidad del rojo 560 mcd a 1120 mcd.
@@ -102,7 +103,7 @@ Las características eléctricas máximas se muestra en la tabla \ref{tab:MAXLED
 Corriente directa &50 mA &35 mA &35 mA\\
 Corriente directa pico &200 mA &100 mA &100 mA \\
 Voltaje inverso &5 V &5 V &5 V\\
-Temperatura de operación &-40 \si{\degree} C a 100 \si{\degree} C  &-40 \si{\degree} C a 100 \si{\degree} C  &-40 \si{\degree} C a 100 \si{\degree} C\\
+Temperatura de operación &-40\si{\degree} C a 100\si{\degree} C  &-40\si{\degree} C a 100\si{\degree} C  &-40\si{\degree} C a 100\si{\degree} C\\
 
 
 \bottomrule
@@ -133,7 +134,7 @@ FPGA SDRAM & 64MB SDRAM\\
 UART & UART a USB\\
 FLASH & EPCS128\\
 Puertos USB & 2\\
-Pines GPIO & 36X2\\
+Pines GPIO & 36x2\\
 Ethernet & 1 Gigabit\\
 
 
@@ -145,11 +146,11 @@ Ethernet & 1 Gigabit\\
 
 \footnotetext{Referencia tomada de \url{https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=836&PartNo=1}}
 
-La plataforma cuenta con un procesador y un FPGA dentro del mismo CHIP como se puede observar en la figura  \ref{fig:DE1BLOCK}. El FPGA fue usado para controlar la matriz de LEDs debido a su capacidad de manejar varias salidas GPIO en paralelo. Mientras que el procesador fue usado para manejar las comunicaciones.
+La plataforma cuenta con un procesador y un FPGA dentro del mismo \textit{chip} como se puede observar en la figura  \ref{fig:DE1BLOCK}. El FPGA fue usado para controlar la matriz de LEDs debido a su capacidad de manejar varias salidas GPIO en paralelo. Mientras que el procesador fue usado para manejar las comunicaciones.
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=0.4]{Figures/fpgablock.jpg}  
+	\includegraphics[scale=0.7]{Figures/fpgablock.jpg}  
 	\caption{Diagrama de bloques DE1-SoC \protect\footnotemark.}
 	\label{fig:DE1BLOCK}
 \end{figure}
@@ -160,9 +161,9 @@ La plataforma cuenta con un procesador y un FPGA dentro del mismo CHIP como se p
 \section{Lenguaje descriptor de hardware}
 
 
-El lenguaje seleccionado para describir el hardware fue \textit{verilog}. Los diseñadores de \textit{verilog} tuvieron como objetivo que la sintaxis sea similar a la del lenguaje C para que fuera aceptada por los ingenieros. El lenguaje posee un preprocesador similar al lenguaje C ademas de compartir palabras reservadas de control. A pesar de tener una sintaxis muy similar a C difiere en la definición de constantes, requiere la longitud de bits, no tiene estructuras, apuntadores o funciones recursivas. 
+El lenguaje seleccionado para describir el hardware fue \textit{verilog}. El lenguaje posee un preprocesador similar al lenguaje C, ademas de compartir palabras reservadas de control. A pesar de tener una sintaxis muy similar a C difiere en la definición de constantes, requiere la longitud de bits, no tiene estructuras, apuntadores o funciones recursivas. 
 
-No todas las sentencias del lenguaje son sintetizables. Si las sentencias de todos los módulos son sintetizables, se pueden convertir en una lista de nodos que describe los componentes básicos. "La lista de nodos puede entonces ser transformada en una forma describiendo las celdas estándar de un circuito integrado, por ejemplo ASIC, o una cadena de bits para un dispositivo de lógica programable (PLD) como puede ser una FPGA o un CPLD"  \citep{WIKIVERILOG}.
+En verilog no todas las sentencias del lenguaje son sintetizables. Si las sentencias de todos los módulos son sintetizables, se pueden convertir en una lista de nodos que describe los componentes básicos. ``La lista de nodos puede entonces ser transformada en una forma describiendo las celdas estándar de un circuito integrado, por ejemplo ASIC, o una cadena de bits para un dispositivo de lógica programable (PLD) como puede ser una FPGA o un CPLD'' \citep{WIKIVERILOG}.
 
 
 
@@ -218,13 +219,13 @@ Tarjeta de distribución:
 \begin{itemize}
 \item Debe tener conectores de entrada IDC40 con la misma distribución de pines usados en las salidas GPIO de la board DE1-SoC.
 \item Debe cambiar los niveles de voltaje de 3.3 v a 5 v de todas las entradas. 
-\item Debe manejar señales de una frecuencia de entre 5 Mhz a 10 Mhz.
+\item Debe manejar señales de una frecuencia de entre 5 MHz a 10 MHz.
 \item Debe tener conectores de salida IDC16 compatibles con la distribución de pines usados en las matrices de LEDs.
 \end{itemize}
 Matriz de LEDs:
 \begin{itemize}
 \item Debe tener un conector de entrada y un conector de salida IDC16.
-\item Debe ser capaz de manejar frecuencias de hasta 10 Mhz.
+\item Debe ser capaz de manejar frecuencias de hasta 10 MHz.
 \item Debe tener drivers de LEDs con escala de grises de 16 bits.
 \item Debe tener 16 LEDs de alto por 16 LEDs de ancho.
 \item Debe ser capaz de pasar la información de la entrada a la salida.

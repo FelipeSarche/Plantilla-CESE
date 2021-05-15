@@ -8,7 +8,7 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-En este capítulo se detallan los ensayos realizados para comprobar el correcto funcionamiento del firmware, hardware ,descripción de hardware y pruebas de campo.
+En este capítulo se detallan los ensayos realizados para comprobar el correcto funcionamiento del firmware, hardware y pruebas de campo.
 \section{Ensayo de firmware}
 Para comprobar el correcto funcionamiento se realizaron los siguientes ensayos sobre algunas de las funciones que forman parte del firmware.
 \subsection{Ensayo función clima}
@@ -83,7 +83,7 @@ Se envió la trama \$HOFF\# a través de la comunicación UDP.  EL resultado de 
 
 \section{Ensayo de hardware}
 \subsection{PCB matriz de LEDs}
-Para comprobar el correcto funcionamiento de las matrices de LEDs se armó un banco de pruebas de matrices de LEDs con el cual se pudo comprobar el correcto funcionamiento de las matrices de LEDs. El prototipo de prueba de matrices de LEDs enciende los colores básico (rojo,verde y azul ) y realiza secuencias básicas. Con este banco se comprobó el correcto funcionamiento de las PCBs matriz de LEDs. En la figura \ref{fig: banco de pruebas} se muestra personal de la empresa realizando el  test de calidad utilizando el banco de pruebas para descartar errores de soldadura.
+Para comprobar el correcto funcionamiento de las matrices de LEDs se armó un banco de pruebas de matrices de LEDs con el cual se pudo comprobar el correcto funcionamiento de las matrices de LEDs. El prototipo de prueba de matrices de LEDs enciende los colores básico (rojo, verde y azul ) y realiza secuencias básicas. Con este banco se comprobó el correcto funcionamiento de las PCBs matriz de LEDs. En la figura \ref{fig: banco de pruebas} se muestra personal de la empresa realizando el  test de calidad utilizando el banco de pruebas para descartar errores de soldadura.
 
 \begin{figure}[htpb]
 	\centering
@@ -95,7 +95,15 @@ Para comprobar el correcto funcionamiento de las matrices de LEDs se armó un ba
 
 
 \subsection{PCB matriz de distribución}
-Para comprobar el correcto funcionamiento de la PCB se colocó una señal cuadrada en al entrada del PCB y se observo las señales de salida con un osciloscopio. Los resultados de este ensayo se muestran en la figura xxx.
+Para comprobar el correcto funcionamiento de la PCB se colocó una señal cuadrada en al entrada del PCB y se observó la señal de salida con un osciloscopio. Los resultados de este ensayo se muestran en la figura \ref{fig: capturaosciloscopio}. Se observa la señal de entrada en el canal uno y la señal de salida en el canal 2. La frecuencia de las dos señales es 2,5 MHz. La amplitud de la señal de entrada es de 3,3 V y la amplitud de la señal de salida es de 5 V. 
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.1]{Figures/osciloscopio.jpg} 
+	\caption{Pruebas de PCB de distribución con osciloscopio.}
+	\label{fig: capturaosciloscopio}
+\end{figure}
+
 
 
 
@@ -143,9 +151,9 @@ Para realizar este ensayo se ensambló la pantalla completa. En las figuras \ref
 
 \section{Pruebas de campo}
 
-Se instalaron varias pantallas en diferentes puntos de la ciudad en la figura \ref{fig: mapa} se muestra la ubicación de las pantallas instaladas.
+Se instalaron varias pantallas en diferentes puntos de la ciudad de Guayaquil en la figura \ref{fig: mapa} se muestra la ubicación de las pantallas instaladas.
 
-Desde la estación remota se enviaron mensajes a diferentes Billie Joe Armstrongpantallas como se puede observar en las figuras \ref{fig: calle1}, \ref{fig: calle2}, \ref{fig: calle3} y \ref{fig: calle4}. Las imágenes se desplegaron de manera correcta logrando comprobar el funcionamiento correcto de todo el sistema en el lugar de instalación.
+Desde la estación remota se enviaron mensajes a diferentes pantallas como se puede observar en las figuras \ref{fig: calle1}, \ref{fig: calle2}, \ref{fig: calle3} y \ref{fig: calle4}. Las imágenes se desplegaron de manera correcta logrando comprobar el funcionamiento correcto de todo el sistema en el lugar de instalación.
 La pruebas fueron realizadas en solo cuatro pantallas debido a que las otras pantallas estaban energizadas pero no tenían conexión a la estación remota.
 
 
