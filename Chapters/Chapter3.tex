@@ -16,7 +16,7 @@ En la figura \ref{fig:bloques embebido} se muestra el diagrama de bloques del si
  
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=2]{Figures/Diagramabloques.jpg} 
+	\includegraphics[scale=1.8]{Figures/Diagramabloques.jpg} 
 	\caption{Diagrama de bloques del sistema embebido.}
 	\label{fig:bloques embebido}
 \end{figure}
@@ -34,22 +34,22 @@ Para construir la pantalla LED se utilizaron varias PCBs matrices de LEDs. La PC
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=0.4]{Figures/pcbfullcolorfrontrender.jpg} 
+	\includegraphics[scale=0.3]{Figures/pcbfullcolorfrontrender.jpg} 
 	\caption{Vista frontal del PCB matriz de LEDs.}
 	\label{fig:pcbrenderfront}
 \end{figure}
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=0.5]{Figures/pcbfullcolorbackrender.jpg} 
+	\includegraphics[scale=4]{Figures/pcbfullcolorbackrender.jpg} 
 	\caption{Vista posterior del PCB matriz de LEDs.}
 	\label{fig:pcbrenderback}
 \end{figure}
 
-En el diseño de la matriz de LEDs se usaron seis drivers de LEDs. Se necesita tres drivers de LEDs para controlar un grupo de 8 filas por 16 columnas de LEDs. Cada driver habilita un solo color básico. En la figura \ref{fig:circuitombi} se muestra el circuito de conexión de uno de los drivers de LEDs. La resistencia R3 junto con el capacitor C17 forman un filtro pasa bajos. El inductor L5 protege al driver de la corriente que se producen cuando se desconecta la fila LEDs durante el barrido. 
+En el diseño de la matriz de LEDs se usaron seis drivers de LEDs. Se necesitan tres drivers de LEDs para controlar un grupo de 8 filas por 16 columnas de LEDs. Cada driver habilita un solo color básico. En la figura \ref{fig:circuitombi} se muestra el circuito de conexión de uno de los drivers de LEDs. La resistencia R3 junto con el capacitor C17 forman un filtro pasa bajos. El inductor L5 protege al driver de la corriente que se producen cuando se desconecta la fila LEDs durante el barrido. 
 
 \begin{figure}[htpb]
 	\centering
-    \includegraphics[scale=0.5]{Figures/circuitombi.jpg} 
+    \includegraphics[scale=0.4]{Figures/circuitombi.jpg} 
 	\caption{Esquemático de conexión de un MBI.}
 	\label{fig:circuitombi}
 \end{figure}
@@ -104,7 +104,7 @@ La figura \ref{fig:fotomatrixled} se muestra la PCB ensamblada. Esta PCB fue ens
 
 
 \subsection{PCB de distribución}
-La PCB de distribución cumple dos funciones. La primera función es elevar el voltaje de las señales de salida del FPGA y la segunda es distribuir la señal hacia las matrices de LEDs. En la figura se puede observar el esquemático que se utilizó para distribuir las señales desde el FPGA hacia las matrices de LEDs. 
+La PCB de distribución cumple dos funciones. La primera función es elevar el voltaje de las señales de salida del FPGA y la segunda es distribuir la señal hacia las matrices de LEDs. En la figura \ref{fig:circuitodistribucion} se puede observar el esquemático que se utilizó para distribuir las señales desde el FPGA hacia las matrices de LEDs. 
 
 En la figura \ref{fig:pcbrenderdistribuccionfrontal}  se muestra la PCB de distribución desde una perspectiva frontal. En la figura \ref{fig:circuitodistribucion} se muestra el circuito de una de las tres salidas de la PCB de distribución. Las señales de control que ingresan en el conector de cuarenta pines tienen un voltaje de 3,3 V mediante el integrado 74LVC245 en cual eleva el voltaje a 5 V. El cambio de nivel de voltaje es necesario debido a que las GPIOs de la BOARD DE1-SoC tienen un nivel de voltaje de 3,3 V y las matrices de LEDs funcionan con señales de control TTL. Para construir la pantalla LED se necesitan cuatro PCBs de distribución motivo por el cual estas PCBs fueron soldadas manualmente. En la figura \ref{fig:fotopcbdistri} se muestra una PCB de distribución ensamblada. 
 
@@ -117,7 +117,7 @@ En la figura \ref{fig:pcbrenderdistribuccionfrontal}  se muestra la PCB de distr
 
 \begin{figure}[htpb]
 	\centering
-    \includegraphics[scale=0.6]{Figures/circuitodistribucion.jpg} 
+    \includegraphics[scale=0.5]{Figures/circuitodistribucion.jpg} 
 	\caption{Circuito de una salida de la PCB de distribución.}
 	\label{fig:circuitodistribucion}
 \end{figure}
@@ -136,7 +136,7 @@ Los archivos de configuración son almacenados en la carpeta de configuraciones 
 
 \begin{figure}[htpb]
 	\centering
-    \includegraphics[scale=1]{Figures/Agenda.png} 
+    \includegraphics[scale=0.7]{Figures/Agenda.png} 
 	\caption{Archivo AGENDA.csv.}
 	\label{fig:agendacsv}
 \end{figure}
@@ -150,7 +150,7 @@ En la figura \ref{fig:offlinecsv} se muestra el archivo OFFLINE.csv. El archivo 
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=1]{Figures/offline.png} 
+	\includegraphics[scale=0.7]{Figures/offline.png} 
 	\caption{Archivo OFFLINE.csv.}
 	\label{fig:offlinecsv}
 \end{figure}
