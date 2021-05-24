@@ -9,7 +9,7 @@ Este capítulo explica las tecnologías aplicadas en el desarrollo de la pantall
 \section{Matriz de LEDs}
 La matriz de LEDs es un conjunto o arreglo de LEDs  bidimensional donde los cátodos se unen en filas y los ánodos se unen en columnas. Existen numerosos métodos para controlar las matrices de LEDs. Para desarrollar este proyecto se seleccionó el método de multiplexación debido a su bajo uso de recursos en comparación a controlar los LEDs de manera individual \citep{CONCEPTOMATRIZ}.
 \subsection{Multiplexación de una Matriz de LEDs }
-La multiplexación es una técnica de control de matrices LED en donde se habilita de forma secuencial una fila de LEDs a la vez y las columnas se habilitan de acuerdo a la imagen que se desea mostrar en la matriz de LEDs. Una vez terminado el proceso para todas las filas de LEDs se procede a comenzar el ciclo nuevamente. La frecuencia del ciclo debe ser superior a 30 Hz para evitar que ojo humano detecte el parpadeo \citep{MULTIPLEXADO}.
+La multiplexación es una técnica de control de matrices LED en donde se habilita de forma secuencial una fila a la vez y las columnas se habilitan de acuerdo a la imagen que se desea mostrar en la matriz. Una vez terminado el proceso para todas las filas se procede a comenzar el ciclo nuevamente. La frecuencia del ciclo debe ser superior a 30 Hz para evitar que el ojo humano detecte el parpadeo \citep{MULTIPLEXADO}.
 
 En la figura \ref{fig:matrizled} se puede observar una matriz de LEDs de cuatro filas por cuatro columnas. Para mostrar la imagen se siguen los siguientes pasos:
 
@@ -55,6 +55,12 @@ Una de las maneras de habilitar las filas es a través de MOSFET canal P y las c
 \subsection{Driver de LED MBI5051}
 El driver que se eligió para habilitar las columnas de LEDs fue el driver MBI5051. Este driver es un producto de la empresa MACROBLOCK. En diseños anteriores se usaron drivers de esta empresa. Este driver fue diseñado para ser usado en pantallas exteriores de vídeo. Las características del driver se muestran en la tabla \ref{tab:driverled}. 
 
+
+
+\section{LED SMD CLX6F}
+Los principales productores de LEDs son CREE, EPISTAR, NICHIA, SEOUL SEMICONDUCTOR, Toyoda Gosei y Agilent.
+El LED que fue elegido para la construcción de la pantalla fue el CLX6F. El CLX6F forma parte del catálogo de productos de la empresa CREE. Se logró contactar con una empresa en Shenzhen que usaba el \textit{chip} de CREE pero agregaba un encapsulado propio, lo que abarato el precio. El producto seleccionado es un LED tricolor diseñado para ser usado en pantallas exteriores de vídeo. Las características principales son:
+
 \begin{table}[h]
 \centering
 \caption[Características MBI5051]{Características del driver MBI5051 \protect\footnotemark.}
@@ -77,9 +83,6 @@ Máxima frecuencia de reloj & 30 MHz\\
 
 \footnotetext{Referencia tomada de \url{https://www.neumueller.com/datenblatt/macroblock/MBI5051\%20Datenblatt\%20-\%20Datasheet.pdf}}
 
-\section{LED SMD CLX6F}
-Los principales productores de LEDs son CREE ,EPISTAR ,NICHIA ,SEOUL SEMICONDUCTOR, Toyoda Gosei y Agilent.
-El LED que fue elegido para la construcción de la pantalla fue el LED SMD CLX6F. El LED SMD CLX6F forma parte del catálogo de productos de la empresa CREE. Se logró contactar con una empresa en Shenzhen que usaba el \textit{chip} de CREE pero agregaba un encapsulado propio, lo que abarato el precio del LED. Este es un LED tricolor diseñado para ser usado en pantallas exteriores de vídeo. Las características principales del LED son:
 \begin{itemize}
 \item Resistencia al agua IPX8.
 \item Luminosidad del rojo 560 mcd a 1120 mcd.
@@ -119,6 +122,21 @@ Temperatura de operación &-40 \si{\degree}C a 100 \si{\degree}C  &-40 \si{\degr
 \section{ Plataforma de desarrollo DE1SoC}
 Para la realización del trabajo se utilizó la plataforma de desarrollo DE1SoC debido a que cumple con los requerimientos y a que la empresa la usó en el desarrollo de proyectos previos. Esto último ahorró mucho tiempo de aprendizaje. Las especificaciones de la plataforma se muestran en la tabla \ref{tab:DE1SOCTABLA}.
 
+
+
+La plataforma cuenta con un procesador y un FPGA dentro del mismo \textit{chip} como se puede observar en la figura  \ref{fig:DE1BLOCK}. El FPGA fue usado para controlar la matriz de LEDs debido a su capacidad de manejar varias salidas GPIO en paralelo. Mientras que el procesador fue usado para manejar las comunicaciones.
+
+
+
+
+\section{Lenguaje descriptor de hardware}
+
+
+
+El lenguaje seleccionado para describir el hardware fue \textit{Verilog}. El lenguaje posee un preprocesador similar al lenguaje C, además de compartir palabras reservadas de control. A pesar de tener una sintaxis muy similar a C difiere en la definición de constantes, requiere la longitud de bits, no tiene estructuras, apuntadores o funciones recursivas. 
+
+En \textit{Verilog} no todas las sentencias del lenguaje son sintetizables. Si las sentencias de todos los módulos son sintetizables, se pueden convertir en una lista de nodos que describe los componentes básicos. ``La lista de nodos puede entonces ser transformada en una forma describiendo las celdas estándar de un circuito integrado, por ejemplo ASIC, o una cadena de bits para un dispositivo de lógica programable (PLD) como puede ser una FPGA o un CPLD'' \citep{WIKIVERILOG}.
+
 \begin{table}[h]
 \centering
 \caption[Especificaciones DE1SoC]{Especificaciones DE1SoC \protect\footnotemark.}
@@ -146,32 +164,15 @@ Ethernet & 1 Gigabit\\
 
 \footnotetext{Referencia tomada de \url{https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=205&No=836&PartNo=1}}
 
-La plataforma cuenta con un procesador y un FPGA dentro del mismo \textit{chip} como se puede observar en la figura  \ref{fig:DE1BLOCK}. El FPGA fue usado para controlar la matriz de LEDs debido a su capacidad de manejar varias salidas GPIO en paralelo. Mientras que el procesador fue usado para manejar las comunicaciones.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[scale=0.7]{Figures/fpgablock.jpg}  
-	\caption{Diagrama de bloques DE1-SoC \protect\footnotemark.}
-	\label{fig:DE1BLOCK}
-\end{figure}
-
-\footnotetext{Referencia tomada de \url{https://www.terasic.com.tw/attachment/archive/836/image/image_77_thumb.jpg}}
-
-
-\section{Lenguaje descriptor de hardware}
-
-
-El lenguaje seleccionado para describir el hardware fue \textit{verilog}. El lenguaje posee un preprocesador similar al lenguaje C, ademas de compartir palabras reservadas de control. A pesar de tener una sintaxis muy similar a C difiere en la definición de constantes, requiere la longitud de bits, no tiene estructuras, apuntadores o funciones recursivas. 
-
-En verilog no todas las sentencias del lenguaje son sintetizables. Si las sentencias de todos los módulos son sintetizables, se pueden convertir en una lista de nodos que describe los componentes básicos. ``La lista de nodos puede entonces ser transformada en una forma describiendo las celdas estándar de un circuito integrado, por ejemplo ASIC, o una cadena de bits para un dispositivo de lógica programable (PLD) como puede ser una FPGA o un CPLD'' \citep{WIKIVERILOG}.
-
-
-
 
 \section{Protocolo de comunicaciones UDP}
-UDP es el acrónimo de protocolo de datagrama de usuario. UDP es un protocolo de comunicaciones que pertenece a la capa de transporte. Este protocolo permite la transmisión de datos sin conexión preliminar y no define la confirmación de recepción. Se usa en aplicaciones en donde el intercambio de paquetes de la conexión o desconexión son mayores a la información transmitida o en aplicaciones de transmisión de audio y vídeo en tiempo real debido a que retransmitir agregaría retardos \citep{WIKIUDP}.
+UDP es el acrónimo de protocolo de datagrama de usuario. UDP es un protocolo de comunicaciones que pertenece a la capa de transporte. Permite la transmisión de datos sin conexión preliminar y no define la confirmación de recepción. Se usa en aplicaciones en donde el intercambio de paquetes de la conexión o desconexión son mayores a la información transmitida o en aplicaciones de transmisión de audio y vídeo en tiempo real debido a que retransmitir agregaría retardos \citep{WIKIUDP}.
 
 
+
+
+
+\pagebreak
 \section{Sistema operativo de propósito general para embebidos}
 
 El sistema operativo que se utilizó en el desarrollo de este trabajo fue Linux embebido. Linux embebido se refiere al uso del núcleo Linux  en un sistema embebido combinado con un conjunto de utilidades de software libre. 
@@ -185,13 +186,22 @@ El núcleo de Linux o \textit{kernel} es la interfaz entre el hardware de un PC 
 \item Seguridad y llamadas de sistema: recibe solicitud de servicio desde procesos. 
 \end{itemize}
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=0.7]{Figures/fpgablock.jpg}  
+	\caption{Diagrama de bloques DE1-SoC \protect\footnotemark.}
+	\label{fig:DE1BLOCK}
+\end{figure}
+
+\footnotetext{Referencia tomada de \url{https://www.terasic.com.tw/attachment/archive/836/image/image_77_thumb.jpg}}
+
 
 \subsection{SAMBA}
 SAMBA es una aplicación que permite que las carpetas compartidas dentro del sistema operativo Linux, Mac OS X o Unix  puedan ser abiertas desde un computador con sistema operativo Windows \citep{WIKISAMBA}.
 
 \subsection{Servicio de Linux}
 
-Los servicios son programas que se ejecutan fuera de la vista y control del usuario ya que no cuentan con interfaz gráfica. Existe algunos servicios que son muy importantes para el funcionamiento del sistema operativo.
+Los servicios son programas que se ejecutan fuera de la vista y control del usuario ya que no cuentan con interfaz gráfica. Existen algunos servicios que son muy importantes para el funcionamiento del sistema operativo.
 En sistemas UNIX o Linux, los servicios son conocidos como demonios \citep{SERVICIO}.
 
 \subsection{SYSTEMD}
@@ -218,7 +228,7 @@ En esta sección se indican los requerimientos que fueron propuestos para el pro
 Tarjeta de distribución:
 \begin{itemize}
 \item Debe tener conectores de entrada IDC40 con la misma distribución de pines usados en las salidas GPIO de la board DE1-SoC.
-\item Debe cambiar los niveles de voltaje de 3.3 V a 5 V de todas las entradas. 
+\item Debe cambiar los niveles de voltaje de 3,3 V a 5 V de todas las entradas. 
 \item Debe manejar señales de una frecuencia de entre 5 MHz a 10 MHz.
 \item Debe tener conectores de salida IDC16 compatibles con la distribución de pines usados en las matrices de LEDs.
 \end{itemize}
@@ -246,13 +256,13 @@ Sistema operativo:
 Firmware procesador:
 \begin{itemize}
 \item Debe ser capaz de leer las imágenes que se encuentran en la carpeta compartida.
-\item Debe ser capaz de escribir en una  memoria ram accesible para el FPGA  las imágenes a ser desplegadas.
+\item Debe ser capaz de escribir en una  memoria RAM accesible para el FPGA  las imágenes a ser desplegadas.
 \item Debe administrar el despliegue de las imágenes por medio de un archivo externo que sea enviado desde la central de control.
 \end{itemize}
 \subsection{Grupos de requerimientos asociados al FPGA}
 FPGA:
 \begin{itemize}
 \item El FPGA debe ser capaz de manejar a la pantalla LED a una frecuencia de  30 Hz.
-\item Debe leer la información del los LEDs de una memoria ram que comparta con el procesador.
+\item Debe leer la información del los LEDs de una memoria RAM que comparta con el procesador.
 \item Debe manejar los drivers de LED a través de una máquina de estado finita.   
 \end{itemize}

@@ -1,7 +1,7 @@
 \chapter{Diseño e implementación} % Main chapter title
 
 \label{Chapter3} 
-En este capítulo se realiza una explicación de la solución propuesta , el diseño de los circuitos impresos, el diseño del firmware y el diseño de la lógica programable.
+En este capítulo se realiza una explicación de la solución propuesta , el diseño de los circuitos impresos, el diseño del firmware y la lógica programable.
 
 \section{ Arquitectura de la solución propuesta}
 Para cumplir los requerimientos enumerados en el capítulo \ref{Chapter2} se desarrolló la solución mostrada en la figura \ref{fig:solución}. Se utilizó la BOARD DE1-SoC en la cual se utilizó el FPGA para controlar la matriz de LEDs y el procesador para administrar el despliegue de las imagenes y manejar las comunicaciones con la estación remota.
@@ -12,7 +12,7 @@ Para cumplir los requerimientos enumerados en el capítulo \ref{Chapter2} se des
 	\label{fig:solución}
 \end{figure}
 
-En la figura \ref{fig:bloques embebido} se muestra el diagrama de bloques del sistema embebido. En la figura \ref{fig:bloques embebido} se muestra la interacción interna y externa de la BOARD DE1-SoC.
+En la figura \ref{fig:bloques embebido} se muestra el diagrama de bloques del sistema embebido, la interacción interna de la BOARD DE1-SoC y la interacción externa de la BOARD DE1-SoC.
  
 \begin{figure}[htpb]
 	\centering
@@ -29,7 +29,7 @@ En la figura \ref{fig:bloques embebido} se muestra el diagrama de bloques del si
 \section{ Diseño de circuitos impresos}
 Se diseñaron dos circuitos impresos (en inglés, PCB, Printed Circuit Board) para la construcción de la pantalla, una PCB matriz de LEDs y una PCB para distribuir señales de control desde el FPGA hacia las matrices de LEDs.
 \subsection{PCB matriz de LEDs}
-Para construir la pantalla LED se utilizaron varias PCBs matrices de LEDs. La PCB matriz LEDs tiene una resolución de 16 LEDs de ancho por 16 LEDS de largo. Los LED tienen un \textit{pitch} P-20. Se utilizó el conector IDC-16 para recibir y transmitir las señales de control. En la figura \ref{fig:pcbrenderfront}  se muestra la PCB desde una perspectiva frontal. En la figura \ref{fig:pcbrenderback} se muestra el lado posterior de la PCB.
+Para construir la pantalla se utilizaron varias PCBs matrices de LEDs. La matriz  tiene una resolución de 16 LEDs de ancho por 16 LEDS de largo. La matriz tienen un \textit{pitch} P-20. Se utilizó el conector IDC-16 para recibir y transmitir las señales de control. En la figura \ref{fig:pcbrenderfront}  se muestra el circuito impreso desde una perspectiva frontal. En la figura \ref{fig:pcbrenderback} se muestra el lado posterior del circuito impreso.
 
 
 \begin{figure}[htpb]
@@ -45,7 +45,7 @@ Para construir la pantalla LED se utilizaron varias PCBs matrices de LEDs. La PC
 	\label{fig:pcbrenderback}
 \end{figure}
 
-En el diseño de la matriz de LEDs se usaron seis drivers de LEDs. Se necesitan tres drivers de LEDs para controlar un grupo de 8 filas por 16 columnas de LEDs. Cada driver habilita un solo color básico. En la figura \ref{fig:circuitombi} se muestra el circuito de conexión de uno de los drivers de LEDs. La resistencia R3 junto con el capacitor C17 forman un filtro pasa bajos. El inductor L5 protege al driver de la corriente que se producen cuando se desconecta la fila LEDs durante el barrido. 
+En el diseño de la matriz se usaron seis drivers de LEDs. Se necesitan tres drivers para controlar un grupo de 8 filas por 16 columnas. Cada driver habilita un solo color básico. En la figura \ref{fig:circuitombi} se muestra el circuito de conexión de uno de los drivers de LEDs. La resistencia R3 junto con el capacitor C17 forman un filtro pasa bajos. El inductor L5 protege al driver de la corriente que se producen cuando se desconecta la fila LEDs durante el barrido. 
 
 \begin{figure}[htpb]
 	\centering
@@ -56,7 +56,7 @@ En el diseño de la matriz de LEDs se usaron seis drivers de LEDs. Se necesitan 
 
 
 
-Como se explicó en el capítulo \ref{Chapter2} las filas son controladas por MOSFETs y las columnas son controladas mediante el driver MBI5051. En el circuito \ref{fig:circuitobarrido} se muestra el circuito de barrido. Las filas son habilitadas usando MOSFETs los cuales son controlados por el demultiplexor 74HC138. El funcionamiento del circuito se describe en la tabla \ref{tab:funcionamientobarrido}.
+Como se explicó en el capítulo \ref{Chapter2} las filas son controladas por MOSFETs y las columnas son controladas mediante el driver MBI5051. En la figura \ref{fig:circuitobarrido} se muestra el circuito de barrido. Las filas son habilitadas usando MOSFETs los cuales son controlados por el demultiplexor 74HC138. El funcionamiento del circuito se describe en la tabla \ref{tab:funcionamientobarrido}.
 
 \begin{figure}[htpb]
 	\centering
@@ -92,7 +92,7 @@ T &T &T &Fila F8 y Fila F16\\
 \end{table}
 
 
-La figura \ref{fig:fotomatrixled} se muestra la PCB ensamblada. Esta PCB fue ensamblada en la empresa utilizando una maquina de \textit{pick and place}. La PCB fue soldada con un horno de soldadura para componentes de montaje superficial (Surface Mount Device, SMD). La curva de temperatura del horno se ajustó de acuerdo a las hojas de datos de el LED ya que esté es el elemento crítico.
+La figura \ref{fig:fotomatrixled} muestra la PCB ensamblada. La placa fue ensamblada en la empresa utilizando una maquina de \textit{pick and place}. La placa fue soldada con un horno de soldadura para componentes de montaje superficial (Surface Mount Device, SMD). La curva de temperatura del horno se ajustó de acuerdo a las hojas de datos de el LED ya que esté es el elemento crítico.
 
 \begin{figure}[htpb]
 	\centering
@@ -100,13 +100,12 @@ La figura \ref{fig:fotomatrixled} se muestra la PCB ensamblada. Esta PCB fue ens
 	\caption{Foto PCB matriz de LEDs.}
 	\label{fig:fotomatrixled}
 \end{figure}
-
+\pagebreak
 
 
 \subsection{PCB de distribución}
-La PCB de distribución cumple dos funciones. La primera función es elevar el voltaje de las señales de salida del FPGA y la segunda es distribuir la señal hacia las matrices de LEDs. En la figura \ref{fig:circuitodistribucion} se puede observar el esquemático que se utilizó para distribuir las señales desde el FPGA hacia las matrices de LEDs. 
-
-En la figura \ref{fig:pcbrenderdistribuccionfrontal}  se muestra la PCB de distribución desde una perspectiva frontal. En la figura \ref{fig:circuitodistribucion} se muestra el circuito de una de las tres salidas de la PCB de distribución. Las señales de control que ingresan en el conector de cuarenta pines tienen un voltaje de 3,3 V mediante el integrado 74LVC245 en cual eleva el voltaje a 5 V. El cambio de nivel de voltaje es necesario debido a que las GPIOs de la BOARD DE1-SoC tienen un nivel de voltaje de 3,3 V y las matrices de LEDs funcionan con señales de control TTL. Para construir la pantalla LED se necesitan cuatro PCBs de distribución motivo por el cual estas PCBs fueron soldadas manualmente. En la figura \ref{fig:fotopcbdistri} se muestra una PCB de distribución ensamblada. 
+La PCB de distribución cumple dos funciones. La primera función es elevar el voltaje de las señales de salida del FPGA y la segunda es distribuir la señal hacia las matrices. En la figura \ref{fig:circuitodistribucion} se puede observar el esquemático parcial (una de las tres salidas) que se utilizó para distribuir las señales desde el FPGA hacia las matrices. 
+Las señales de control que ingresan en el conector de cuarenta pines tienen un voltaje de 3,3 V mediante el integrado 74LVC245 se eleva el voltaje a 5 V. El cambio de nivel de voltaje es necesario debido a que las GPIOs de la BOARD DE1-SoC tienen un nivel de voltaje de 3,3 V y las matrices funcionan con señales de control TTL. Para construir la pantalla se necesitan cuatro PCBs de distribución motivo por el cual estas fueron soldadas manualmente. En la figura \ref{fig:pcbrenderdistribuccionfrontal}  se muestra la PCB de distribución desde una perspectiva frontal. En la figura \ref{fig:fotopcbdistri} se muestra una tarjeta de distribución ensamblada. 
 
 \begin{figure}[htpb]
 	\centering
@@ -130,9 +129,9 @@ En la figura \ref{fig:pcbrenderdistribuccionfrontal}  se muestra la PCB de distr
 \end{figure}
 
 \section{ Diseño del firmware}
-El firmware fue escrito en lenguaje C. El firmware es administrado por el sistema operativo Linux. El firmware es ejecutado por un servicio. El servicio es administrado por SYSTEMD. Las imágenes son almacenadas  dentro de la carpeta compartida mediante SAMBA. 
+El firmware fue escrito en lenguaje C, es administrado por el sistema operativo Linux y  es ejecutado mediante un servicio. El servicio es administrado por SYSTEMD. Las imágenes son almacenadas  dentro de la carpeta compartida mediante SAMBA. 
 
-Los archivos de configuración son almacenados en la carpeta de configuraciones en varios archivos CSV. En la figura \ref{fig:agendacsv} se muestra el archivo AGENDA.csv. El archivo AGENDA.csv contiene el numero de imagen y el tiempo en segundos que se debe mostrar la imagen en la pantalla.
+Los archivos de configuración son almacenados en la carpeta de configuraciones en varios archivos CSV. En la figura \ref{fig:agendacsv} se muestra el archivo AGENDA.csv. Contiene el numero de imagen y el tiempo en segundos que se debe mostrar la imagen en la pantalla.
 
 \begin{figure}[htpb]
 	\centering
@@ -146,7 +145,7 @@ El archivo CONFIGURACION.csv contiene la ultima configuración de las banderas c
 
 El archivo IPBASE.csv contiene la dirección IP de la central de control.
 
-En la figura \ref{fig:offlinecsv} se muestra el archivo OFFLINE.csv. El archivo OFFLINE.csv contiene el numero de imagen y el tiempo en segundos que se debe mostrar la imagen en la pantalla cuando la pantalla pierde conexión con la central de control.
+En la figura \ref{fig:offlinecsv} se muestra el archivo OFFLINE.csv. Contiene el número de imagen y el tiempo en segundos que se debe mostrar la imagen en la pantalla cuando se pierde conexión con la central de control.
 
 \begin{figure}[htpb]
 	\centering
@@ -154,7 +153,7 @@ En la figura \ref{fig:offlinecsv} se muestra el archivo OFFLINE.csv. El archivo 
 	\caption{Archivo OFFLINE.csv.}
 	\label{fig:offlinecsv}
 \end{figure}
-EL archivo FIFO llamado myfifo se usa para interactuar con otros programas que se encuentran en el sistema por medio de este se puede actualizar las imágenes que se muestran en pantalla.
+EL archivo FIFO llamado myfifo se usa para interactuar con otros programas que se encuentran en el sistema, por medio de este se puede actualizar las imágenes que se muestran en pantalla.
 
 
 Las tareas que realiza el firmware son:
@@ -166,15 +165,15 @@ Las tareas que realiza el firmware son:
 \item Generar y mostrar un reloj en la pantalla en función de la configuración.
 \item Mostrar datos relevantes del clima en la pantalla en función de la configuración.
 \item Mostrar tiempos de viaje en la pantalla en función de la configuración.
-\item Interacción con otros programas mediante archivos FIFO.
-\item Mostrar mensajes de emergencia que se muestran solo por un tiempo definido.
+\item Interactuar con otros programas mediante archivos FIFO.
+\item Mostrar mensajes de emergencia solo por un tiempo definido.
 \item Reorganizar la imagen leída de la memoria SD y almacenarla en la memoria compartida con el FPGA.
 \item Mostrar actualizaciones de las tareas realizadas en la consola.
 \end{itemize}
 
-La solución alcanzada consta de cuatro hilos. En las figuras \ref{fig: hiloprincipal1} y \ref{fig: hiloprincipal2} muestran el diagrama de flujo del hilo principal del firmware. 
+La solución alcanzada consta de cuatro hilos. Las figuras \ref{fig: hiloprincipal1} y \ref{fig: hiloprincipal2} muestran el diagrama de flujo del hilo principal del firmware. 
 
-La comunicación con la estación remota es manejada por el hilo de comunicaciones. Los diagramas de flujo de el hilo de comunicación se muestran en las figuras \ref{fig: hilocomparte1}, \ref{fig: hilocomparte2} y \ref{fig: hilocomparte3}.
+La comunicación con la estación remota es manejada por el hilo de comunicaciones. Los diagramas de flujo del hilo de comunicación se muestran en las figuras \ref{fig: hilocomparte1}, \ref{fig: hilocomparte2} y \ref{fig: hilocomparte3}.
 
 La interacción con otros programas es manejada por el hilo de FIFO. El diagrama de flujo se muestra en la figura \ref{fig: hilofifo}.
 
@@ -225,7 +224,7 @@ El último hilo comprueba la comunicación con la estación remota y actualiza l
 \pagebreak
 
 \section{ Diseño de lógica programable}
-Para controlar las matrices de la pantalla LED se deben realizar varios procesos simultáneos ademas de controlar una gran cantidad de salidas GPIO. Por esta razón se decidió utilizar el FPGA para controlar la matriz de LEDs.
+Para controlar las matrices de la pantalla LED se deben realizar varios procesos simultáneos además de controlar una gran cantidad de salidas GPIO. Por esta razón se decidió utilizar el FPGA para controlar la matriz de LEDs.
 El FPGA realiza las siguientes tareas:
 \begin{itemize}
 \item Leer los bytes ya procesados por el firmware de la memoria compartida con el procesador. 
@@ -233,10 +232,10 @@ El FPGA realiza las siguientes tareas:
 \item Apagado controlado de la matriz de LEDs por medio de una señal Lightweigth HPS-to-FPGA.
 \end{itemize}
 
-Mediante la herramienta de diseño de QUARTUS (PLATFORM DESIGNER) se interconectaron los módulos como se muestran en la siguiente figura \ref{fig: platform}. Un resumen de los módulos se muestra a continuación:
+Mediante la herramienta de diseño de QUARTUS (PLATFORM DESIGNER) se interconectaron los módulos como se muestran en la figura \ref{fig: platform}. Un resumen de los módulos se muestra a continuación:
 \begin{itemize}
-\item El módulo System\_PLL tiene la función de generar dos relojes un de 100 MHz para el procesador y un reloj de 50 MHz para el FPGA.
-\item El módulo onchip\_ram es una memoria ram dual asincrónica. La memoria es compartida por el FPGA y el procesador. 
+\item El módulo System\_PLL tiene la función de generar dos relojes uno de 100 MHz para el procesador y un reloj de 50 MHz para el FPGA.
+\item El módulo onchip\_ram es una memoria RAM dual asincrónica. La memoria es compartida por el FPGA y el procesador. 
 \item El módulo pio\_0 es la comunicación Lightweigth HPS-to-FPGA. 
 \item El módulo ARM\_9\_HPS es el procesador. 
 \end{itemize}
