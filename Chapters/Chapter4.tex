@@ -12,7 +12,7 @@ En este capítulo se detallan los ensayos realizados para comprobar el correcto 
 \section{Ensayo de firmware}
 Para comprobar el correcto funcionamiento se realizaron los siguientes ensayos sobre algunas de las funciones que forman parte del firmware.
 \subsection{Ensayo función clima}
-Se envió la trama \$CON\# a través de la comunicación UDP. EL resultado de este ensayo se muestra en la figura \ref{fig: ensayo clima 1}. En la figura se observa el despligue de dos imágenes del agendamiento y las imágenes del clima. Las imágenes del clima se muestran durante cuatro segundos. En el archivo CONFIGURACION.csv se modificó el campo ``flagclima'' como se muestra en la figura \ref{fig: ensayo clima 2}. Cuando el sistema era reiniciado el firmware recuperaba la última configuración del campo ``flagclima'' como se muestra en la figura \ref{fig: ensayo clima 3}. 
+Se envió la trama \$CON\# a través de la comunicación UDP. EL resultado de este ensayo se muestra en la figura \ref{fig: ensayo clima 1}. En la figura se observa el despliegue de dos imágenes del agendamiento y las imágenes del clima. Las imágenes del clima se muestran durante cuatro segundos. En el archivo ``CONFIGURACION.csv'' se modificó el campo ``flagclima'' como se muestra en la figura \ref{fig: ensayo clima 2}. Cuando el sistema era reiniciado el firmware recuperaba la última configuración del campo ``flagclima'' como se muestra en la figura \ref{fig: ensayo clima 3}. 
 
 \begin{figure}[htpb]
 	\centering
@@ -46,7 +46,7 @@ Se envió la trama \$COFF\# a través de la comunicación UDP.  EL resultado de 
 
 \subsection{Ensayo función reloj}
 
-Se envió la trama \$HON\# a través de la comunicación UDP. EL resultado de este ensayo se muestra en la figura \ref{fig: ensayo reloj 1}. En la figura se observa el despligue de dos imágenes del agendamiento y las imágenes del reloj. Las imágenes del reloj se muestran durante cuatro segundos. En el archivo CONFIGURACION.csv se modificó el campo ``flagclock'' como se muestra en la figura \ref{fig: ensayo reloj 2}. Cuando el sistema era reiniciado el firmware recuperaba la última configuración del campo ``flagclock'' como se muestra en la figura \ref{fig: ensayo reloj 3}. 
+Se envió la trama \$HON\# a través de la comunicación UDP. EL resultado de este ensayo se muestra en la figura \ref{fig: ensayo reloj 1} donde se observa el despliegue de dos imágenes del agendamiento y las imágenes del reloj. Las imágenes del reloj se muestran durante cuatro segundos. En el archivo ``CONFIGURACION.csv'' se modificó el campo ``flagclock'' como se muestra en la figura \ref{fig: ensayo reloj 2}. Cuando el sistema era reiniciado el firmware recuperaba la última configuración del campo ``flagclock'' como se muestra en la figura \ref{fig: ensayo reloj 3}. 
 
 \begin{figure}[htpb]
 	\centering
@@ -69,7 +69,7 @@ Se envió la trama \$HON\# a través de la comunicación UDP. EL resultado de es
 	\label{fig: ensayo reloj 3}
 \end{figure}
 
-Se envió la trama \$HOFF\# a través de la comunicación UDP.  EL resultado de este ensayo se muestra en la figura \ref{fig: ensayo reloj 4}. En la figura se observa que las imágenes que corresponden al reloj ya no aparecen.
+Se envió la trama \$HOFF\# a través de la comunicación UDP.  EL resultado de este ensayo se muestra en la figura \ref{fig: ensayo reloj 4} donde se observa que las imágenes que corresponden al reloj ya no aparecen.
 
 \begin{figure}[htpb]
 	\centering
@@ -107,9 +107,9 @@ Para comprobar el correcto funcionamiento de la PCB se colocó una señal cuadra
 
 
 
-\section{Ensayo de sistema}
+\section{Ensayo del sistema}
 \subsection{Ensayo de matrices sobre mesa de trabajo}
-Este ensayo se lo realizó armando el prototipo sobre una mesa de pruebas. Se cargaron las imágenes en la carpeta compartida y se corrió el firmware a través de la consola de comandos. Los resultados de esta prueba se los puede observar en la figura \ref{fig: matriz4x4}. Debido a el posicionamiento inadecuado y el ángulo de visión de las PCBs no se puede apreciar la imagen.
+Este ensayo se lo realizó armando el prototipo sobre una mesa de pruebas. Se cargaron las imágenes en la carpeta compartida y se corrió el firmware a través de la consola de comandos. Los resultados de esta prueba se pueden observar en la figura \ref{fig: matriz4x4}. Debido a el posicionamiento inadecuado y el ángulo de visión de las PCBs no se puede apreciar la imagen.
 
 \begin{figure}[htpb]
 	\centering
